@@ -307,7 +307,7 @@ impl DashboardPage {
         let icon = gtk::Image::from_icon_name("emblem-system-symbolic");
         icon.add_css_class("accent");
         header.append(&icon);
-        let title = gtk::Label::new(Some("Daemon Status"));
+        let title = gtk::Label::new(Some("Service Status"));
         title.add_css_class("heading");
         header.append(&title);
         card.append(&header);
@@ -316,7 +316,7 @@ impl DashboardPage {
         let status_row = gtk::Box::new(gtk::Orientation::Horizontal, 12);
         status_row.set_margin_top(8);
         
-        let status_icon = gtk::Image::from_icon_name("emblem-synchronizing-symbolic");
+        let status_icon = gtk::Image::from_icon_name("content-loading-symbolic");
         status_icon.set_icon_size(gtk::IconSize::Large);
         status_row.append(&status_icon);
         let _ = imp.daemon_status_icon.set(status_icon);
@@ -330,7 +330,7 @@ impl DashboardPage {
         status_box.append(&status_label);
         let _ = imp.daemon_status_label.set(status_label);
         
-        let status_desc = gtk::Label::new(Some("The daemon handles privileged operations"));
+        let status_desc = gtk::Label::new(Some("NetworkManager handles network configuration"));
         status_desc.add_css_class("dim-label");
         status_desc.add_css_class("caption");
         status_desc.set_halign(gtk::Align::Start);
@@ -338,17 +338,66 @@ impl DashboardPage {
         
         status_row.append(&status_box);
         
-        // Restart button (hidden by default)
-        let restart_button = gtk::Button::with_label("Start Daemon");
+        // Start button (hidden by default, shown when NetworkManager is not running)
+        let restart_button = gtk::Button::with_label("Start Service");
         restart_button.add_css_class("suggested-action");
         restart_button.set_valign(gtk::Align::Center);
         restart_button.set_visible(false);
-        restart_button.connect_clicked(|_| {
-            // Try to start the daemon via systemctl
-            std::thread::spawn(|| {
-                let _ = std::process::Command::new("systemctl")
-                    .args(["--user", "start", "cd-network-managerd.service"])
+        let page_weak = self.downgrade();
+        restart_button.connect_clicked(move |btn| {
+            btn.set_sensitive(false);
+            btn.set_label("Starting…");
+            // Use a channel to communicate result back to the main thread
+            let (tx, rx) = std::sync::mpsc::channel();
+            // Start NetworkManager via pkexec (prompts for root password)
+            std::thread::spawn(move || {
+                let result = std::process::Command::new("pkexec")
+                    .args(["systemctl", "start", "NetworkManager.service"])
                     .status();
+                let succeeded = result.map(|s| s.success()).unwrap_or(false);
+                let _ = tx.send(succeeded);
+            });
+            // Poll for result on the main thread
+            let page_ref = page_weak.clone();
+            glib::timeout_add_local(std::time::Duration::from_millis(200), move || {
+                match rx.try_recv() {
+                    Ok(succeeded) => {
+                        if let Some(page) = page_ref.upgrade() {
+                            if succeeded {
+                                // Give NetworkManager a moment to finish starting
+                                let page_weak2 = page.downgrade();
+                                glib::timeout_add_local_once(
+                                    std::time::Duration::from_secs(2),
+                                    move || {
+                                        if let Some(page) = page_weak2.upgrade() {
+                                            page.check_daemon_status();
+                                        }
+                                    },
+                                );
+                            } else {
+                                // Reset button if failed / cancelled
+                                if let Some(button) = page.imp().daemon_restart_button.get() {
+                                    button.set_label("Start Service");
+                                    button.set_sensitive(true);
+                                }
+                            }
+                        }
+                        glib::ControlFlow::Break
+                    }
+                    Err(std::sync::mpsc::TryRecvError::Empty) => {
+                        glib::ControlFlow::Continue
+                    }
+                    Err(_) => {
+                        // Channel disconnected — reset button
+                        if let Some(page) = page_ref.upgrade() {
+                            if let Some(button) = page.imp().daemon_restart_button.get() {
+                                button.set_label("Start Service");
+                                button.set_sensitive(true);
+                            }
+                        }
+                        glib::ControlFlow::Break
+                    }
+                }
             });
         });
         status_row.append(&restart_button);
@@ -769,9 +818,9 @@ impl DashboardPage {
         let (tx, rx) = std::sync::mpsc::channel();
         
         std::thread::spawn(move || {
-            // Check if the daemon D-Bus service is available
+            // Check if NetworkManager is running (the real service this app depends on)
             let is_running = std::process::Command::new("systemctl")
-                .args(["--user", "is-active", "--quiet", "cd-network-managerd.service"])
+                .args(["is-active", "--quiet", "NetworkManager.service"])
                 .status()
                 .map(|s| s.success())
                 .unwrap_or(false);
@@ -808,7 +857,7 @@ impl DashboardPage {
         
         if let Some(icon) = imp.daemon_status_icon.get() {
             if is_running {
-                icon.set_icon_name(Some("emblem-ok-symbolic"));
+                icon.set_icon_name(Some("object-select-symbolic"));
                 icon.remove_css_class("error");
                 icon.add_css_class("success");
             } else {
