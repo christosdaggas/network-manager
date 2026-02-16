@@ -1,0 +1,83 @@
+# Network Manager Cosmic - Flatpak Manifest
+# Build with: flatpak-builder --user --install --force-clean build-dir com.chrisdaggas.network-manager.yml
+# Runtime: GNOME 47
+
+app-id: com.chrisdaggas.network-manager
+runtime: org.gnome.Platform
+runtime-version: '47'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+
+command: network-manager
+
+finish-args:
+  # X11 + XShm access (for X11 compatibility)
+  - --share=ipc
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # GPU acceleration for GTK rendering
+  - --device=dri
+  # Network access (required for network management)
+  - --share=network
+  # D-Bus system bus access for NetworkManager
+  - --system-talk-name=org.freedesktop.NetworkManager
+  - --system-talk-name=org.freedesktop.hostname1
+  - --system-talk-name=org.freedesktop.resolve1
+  # D-Bus session bus for desktop integration
+  - --socket=session-bus
+  # Portal access for file dialogs
+  - --talk-name=org.freedesktop.portal.Desktop
+  - --talk-name=org.freedesktop.portal.FileChooser
+  # Notifications
+  - --talk-name=org.freedesktop.Notifications
+  # Settings (for dark mode detection)
+  - --talk-name=org.freedesktop.portal.Settings
+  # GTK settings
+  - --talk-name=org.gtk.Settings
+  # Polkit for privilege escalation
+  - --system-talk-name=org.freedesktop.PolicyKit1
+  # Access to network configuration (read-only for monitoring)
+  - --filesystem=/etc/NetworkManager:ro
+  - --filesystem=/etc/hosts:ro
+  - --filesystem=/etc/hostname:ro
+  # Access to sysfs for network interface info
+  - --filesystem=/sys/class/net:ro
+  # User config directory
+  - --filesystem=xdg-config/network-manager:create
+  # Autostart directory
+  - --filesystem=xdg-config/autostart:create
+  # Environment for libadwaita
+  - --env=GTK_THEME=Adwaita
+
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HOME: /run/build/network-manager/cargo
+    RUST_BACKTRACE: '1'
+
+modules:
+  - name: network-manager-cosmic
+    buildsystem: simple
+    build-commands:
+      # Build the application
+      - cargo build --release --offline
+      # Install binary
+      - install -Dm755 target/release/network-manager /app/bin/network-manager
+      # Install desktop file
+      - install -Dm644 data/com.chrisdaggas.network-manager.desktop /app/share/applications/com.chrisdaggas.network-manager.desktop
+      # Install metainfo
+      - install -Dm644 data/com.chrisdaggas.network-manager.metainfo.xml /app/share/metainfo/com.chrisdaggas.network-manager.metainfo.xml
+      # Install icons
+      - install -Dm644 data/icons/hicolor/scalable/apps/com.chrisdaggas.network-manager.svg /app/share/icons/hicolor/scalable/apps/com.chrisdaggas.network-manager.svg
+      # Install symbolic icon if exists
+      - |
+        if [ -f data/icons/hicolor/symbolic/apps/com.chrisdaggas.network-manager-symbolic.svg ]; then
+          install -Dm644 data/icons/hicolor/symbolic/apps/com.chrisdaggas.network-manager-symbolic.svg /app/share/icons/hicolor/symbolic/apps/com.chrisdaggas.network-manager-symbolic.svg
+        fi
+    sources:
+      - type: dir
+        path: .
+      # Cargo sources generated with flatpak-cargo-generator
+      - cargo-sources.json

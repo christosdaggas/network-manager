@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Network Manager - Polkit Policy
+  Copyright (C) 2026 Christos A. Daggas
+  SPDX-License-Identifier: MIT
+  
+  This policy file defines authorization rules for privileged operations
+  performed by the Network Manager daemon.
+-->
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>Christos A. Daggas</vendor>
+  <vendor_url>https://chrisdaggas.com</vendor_url>
+  <icon_name>com.chrisdaggas.network-manager</icon_name>
+
+  <!-- Activate any profile (requires admin authentication) -->
+  <action id="com.chrisdaggas.network-manager.activate-profile">
+    <description>Activate a network/system profile</description>
+    <description xml:lang="el">Ενεργοποίηση προφίλ δικτύου/συστήματος</description>
+    <message>Authentication is required to activate a network profile</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για ενεργοποίηση προφίλ δικτύου</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.owner">unix-user:root</annotate>
+  </action>
+
+  <!-- Activate a pre-approved profile (for non-admin users) -->
+  <action id="com.chrisdaggas.network-manager.activate-approved-profile">
+    <description>Activate a pre-approved network/system profile</description>
+    <description xml:lang="el">Ενεργοποίηση προεγκεκριμένου προφίλ</description>
+    <message>Authentication is required to activate an approved profile</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για προεγκεκριμένο προφίλ</message>
+    <defaults>
+      <allow_any>auth_self</allow_any>
+      <allow_inactive>auth_self</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Modify network configuration -->
+  <action id="com.chrisdaggas.network-manager.modify-network">
+    <description>Modify network configuration</description>
+    <description xml:lang="el">Τροποποίηση ρυθμίσεων δικτύου</description>
+    <message>Authentication is required to modify network settings</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για τροποποίηση δικτύου</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Modify system configuration (hostname, hosts, etc.) -->
+  <action id="com.chrisdaggas.network-manager.modify-system">
+    <description>Modify system configuration</description>
+    <description xml:lang="el">Τροποποίηση ρυθμίσεων συστήματος</description>
+    <message>Authentication is required to modify system settings</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για τροποποίηση συστήματος</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Execute scripts (highest privilege requirement) -->
+  <action id="com.chrisdaggas.network-manager.execute-script">
+    <description>Execute pre/post profile scripts</description>
+    <description xml:lang="el">Εκτέλεση σεναρίων προφίλ</description>
+    <message>Authentication is required to execute profile scripts</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για εκτέλεση σεναρίων</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.imply">com.chrisdaggas.network-manager.activate-profile</annotate>
+  </action>
+
+  <!-- Manage profiles (create, edit, delete) -->
+  <action id="com.chrisdaggas.network-manager.manage-profiles">
+    <description>Create, edit, or delete profiles</description>
+    <description xml:lang="el">Δημιουργία, επεξεργασία ή διαγραφή προφίλ</description>
+    <message>Authentication is required to manage profiles</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για διαχείριση προφίλ</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <!-- View logs (lower privilege) -->
+  <action id="com.chrisdaggas.network-manager.view-logs">
+    <description>View profile activation logs</description>
+    <description xml:lang="el">Προβολή αρχείων καταγραφής</description>
+    <message>Authentication is required to view logs</message>
+    <message xml:lang="el">Απαιτείται έλεγχος ταυτότητας για προβολή αρχείων</message>
+    <defaults>
+      <allow_any>auth_self</allow_any>
+      <allow_inactive>auth_self</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

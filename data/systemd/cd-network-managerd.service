@@ -1,0 +1,42 @@
+[Unit]
+Description=Network Manager Profile Daemon
+Documentation=https://github.com/christosdaggas/cd-network-manager
+After=network.target NetworkManager.service
+Wants=network.target
+
+[Service]
+Type=dbus
+BusName=com.chrisdaggas.NetworkManagerd
+ExecStart=/usr/bin/cd-network-managerd
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=false
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+MemoryDenyWriteExecute=true
+LockPersonality=true
+
+# Allow network configuration
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_SYS_ADMIN
+AmbientCapabilities=CAP_NET_ADMIN
+
+# Read-write paths for configuration
+ReadWritePaths=/etc/hosts
+ReadWritePaths=/etc/hostname
+ReadWritePaths=/var/lib/cd-network-manager
+
+# D-Bus requires this
+ProtectHostname=false
+
+[Install]
+WantedBy=multi-user.target

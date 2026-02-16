@@ -1,0 +1,560 @@
+/* ============================================================
+ * Status Indicators
+ * ============================================================ */
+
+.status-indicator {
+    border-radius: 50%;
+    min-width: 12px;
+    min-height: 12px;
+    background-color: @borders;
+}
+
+.status-indicator.active {
+    background-color: @success_color;
+}
+
+.status-indicator.inactive {
+    background-color: @borders;
+}
+
+.status-indicator.error {
+    background-color: @error_color;
+}
+
+.status-indicator.warning {
+    background-color: @warning_color;
+}
+
+.status-indicator.applying {
+    background-color: @accent_color;
+    animation: pulse 1s infinite;
+}
+
+/* ============================================================
+ * Profile Cards / List Rows
+ * ============================================================ */
+
+.profile-row {
+    padding: 12px;
+    margin: 4px 8px;
+    border-radius: 8px;
+    transition: background-color 200ms ease;
+    background-color: @card_bg_color;
+}
+
+.profile-row:hover {
+    background-color: alpha(@card_bg_color, 0.8);
+}
+
+.profile-row:selected {
+    background-color: alpha(@accent_color, 0.15);
+}
+
+/* Profiles list container - transparent background */
+.profiles-list {
+    background: transparent;
+}
+
+.profile-row .profile-name {
+    font-weight: 600;
+}
+
+.profile-row .profile-group {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+.profile-row .profile-last-applied {
+    font-size: 0.85em;
+    opacity: 0.6;
+}
+
+/* ============================================================
+ * Status Pills (Active/Inactive/Error badges)
+ * ============================================================ */
+
+.status-pill {
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.status-pill.active {
+    background-color: alpha(@success_color, 0.2);
+    color: @success_color;
+}
+
+.status-pill.inactive {
+    background-color: alpha(@borders, 0.3);
+    color: @window_fg_color;
+}
+
+.status-pill.error {
+    background-color: alpha(@error_color, 0.2);
+    color: @error_color;
+}
+
+.status-pill.applying {
+    background-color: alpha(@accent_color, 0.2);
+    color: @accent_color;
+}
+
+.status-pill.status-active {
+    background-color: alpha(@success_color, 0.2);
+    color: @success_color;
+}
+
+.status-pill.status-ready {
+    background-color: alpha(@accent_color, 0.15);
+    color: @accent_color;
+}
+
+/* Active profile row highlight */
+.profile-row.active-profile {
+    background-color: alpha(@success_color, 0.1);
+    border-left: 3px solid @success_color;
+}
+
+/* Button styling in profile rows */
+.profile-row button.flat.destructive-action {
+    color: @error_color;
+}
+
+.profile-row button.flat.destructive-action:hover {
+    background-color: alpha(@error_color, 0.15);
+}
+
+/* ============================================================
+ * Navigation Sidebar
+ * ============================================================ */
+
+/* Sidebar box styling */
+.sidebar-box {
+    background-color: @sidebar_bg_color;
+    transition: all 200ms ease-out;
+}
+
+/* Navigation row box - centers icons when collapsed */
+.nav-row-box {
+    min-height: 24px;
+}
+
+/* Navigation label transition */
+.nav-label {
+    transition: opacity 150ms ease-out;
+}
+
+.navigation-sidebar row {
+    padding: 8px 12px;
+    margin: 2px 6px;
+    border-radius: 6px;
+}
+
+.navigation-sidebar row:selected {
+    background-color: alpha(@accent_color, 0.15);
+}
+
+.navigation-sidebar row image {
+    -gtk-icon-style: symbolic;
+}
+
+.navigation-sidebar row label {
+    font-weight: 500;
+}
+
+/* ---- Collapsed sidebar overrides ---- */
+.sidebar-collapsed .navigation-sidebar row {
+    padding: 8px 4px;
+    margin: 2px 2px;
+}
+
+/* ============================================================
+ * Dashboard Cards
+ * ============================================================ */
+
+.dashboard-card,
+box.dashboard-card {
+    background-color: @card_bg_color;
+    border-radius: 12px;
+    border: 1px solid alpha(@window_fg_color, 0.08);
+    padding: 16px;
+    box-shadow: 0 1px 3px alpha(black, 0.12);
+    transition: all 200ms ease;
+}
+
+.dashboard-card:hover,
+box.dashboard-card:hover {
+    box-shadow: 0 4px 12px alpha(black, 0.15);
+    border-color: alpha(@accent_color, 0.3);
+}
+
+/* Accent-colored elements (uses system accent color) */
+.accent-colored {
+    color: @accent_color;
+}
+
+.dashboard-card .card-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.dashboard-card .card-value {
+    font-size: 1.8em;
+    font-weight: 800;
+    font-feature-settings: "tnum";
+}
+
+.dashboard-card .card-subtitle {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+/* ============================================================
+ * Action Groups (Profile Editor)
+ * ============================================================ */
+
+.action-group-header {
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 12px 0 8px 0;
+}
+
+.action-row {
+    padding: 8px 0;
+}
+
+.action-row.disabled {
+    opacity: 0.5;
+}
+
+.action-row .action-icon {
+    color: @accent_color;
+    margin-right: 12px;
+}
+
+/* ============================================================
+ * Apply Progress Overlay
+ * ============================================================ */
+
+.apply-overlay {
+    background-color: alpha(@window_bg_color, 0.95);
+}
+
+.apply-step {
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.apply-step.pending {
+    opacity: 0.6;
+}
+
+.apply-step.running {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+.apply-step.success {
+    background-color: alpha(@success_color, 0.1);
+}
+
+.apply-step.error {
+    background-color: alpha(@error_color, 0.1);
+}
+
+.apply-step .step-icon.success {
+    color: @success_color;
+}
+
+.apply-step .step-icon.error {
+    color: @error_color;
+}
+
+.apply-step .step-icon.running {
+    color: @accent_color;
+}
+
+/* ============================================================
+ * Log View
+ * ============================================================ */
+
+.log-view {
+    font-family: monospace;
+    font-size: 10pt;
+}
+
+.log-entry.error {
+    color: @error_color;
+}
+
+.log-entry.warning {
+    color: @warning_color;
+}
+
+.log-entry.info {
+    color: @accent_color;
+}
+
+.log-timestamp {
+    opacity: 0.6;
+    font-size: 0.9em;
+}
+
+/* ============================================================
+ * Form Validation
+ * ============================================================ */
+
+.validation-error {
+    color: @error_color;
+    font-size: 0.85em;
+    margin-top: 4px;
+}
+
+entry.error {
+    border-color: @error_color;
+    box-shadow: 0 0 0 1px alpha(@error_color, 0.3);
+}
+
+entry.valid {
+    border-color: @success_color;
+}
+
+/* ============================================================
+ * Empty State
+ * ============================================================ */
+
+.empty-state {
+    padding: 48px;
+}
+
+.empty-state .empty-icon {
+    color: alpha(@window_fg_color, 0.3);
+    margin-bottom: 16px;
+}
+
+.empty-state .empty-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.empty-state .empty-description {
+    opacity: 0.7;
+    margin-bottom: 24px;
+}
+
+/* ============================================================
+ * Semantic Colors
+ * ============================================================ */
+
+.success {
+    color: @success_color;
+}
+
+.warning {
+    color: @warning_color;
+}
+
+.error {
+    color: @error_color;
+}
+
+.accent {
+    color: @accent_color;
+}
+
+.dim-label {
+    opacity: 0.7;
+}
+
+/* ============================================================
+ * Typography
+ * ============================================================ */
+
+.title-1 {
+    font-size: 24pt;
+    font-weight: 800;
+}
+
+.title-2 {
+    font-size: 18pt;
+    font-weight: 700;
+}
+
+.title-3 {
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+.heading {
+    font-weight: 600;
+}
+
+.caption {
+    font-size: 10pt;
+}
+
+.monospace {
+    font-family: monospace;
+}
+
+/* ============================================================
+ * Animations
+ * ============================================================ */
+
+@keyframes pulse {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+ * Responsive / Adaptive Adjustments
+ * ============================================================ */
+
+/* Compact mode for narrow windows */
+.compact .dashboard-card {
+    padding: 12px;
+}
+
+.compact .profile-row {
+    padding: 8px;
+}
+
+/* ============================================================
+ * Theme Selector
+ * ============================================================ */
+
+.theme-selector {
+    border-radius: 50%;
+    border: 2px solid alpha(@window_fg_color, 0.3);
+    padding: 0;
+    margin: 0;
+}
+
+.theme-default {
+    background: conic-gradient(from 135deg, #ffffff 0deg, #ffffff 180deg, #1e1e1e 180deg, #1e1e1e 360deg);
+    background-size: 100% 100%;
+    background-origin: border-box;
+}
+
+.theme-light {
+    background-color: #ffffff;
+    border-color: alpha(@window_fg_color, 0.15);
+}
+
+.theme-dark {
+    background-color: #1e1e1e;
+}
+
+.theme-button {
+    padding: 4px;
+    min-width: 52px;
+    min-height: 52px;
+}
+
+.theme-button:checked {
+    background-color: alpha(@accent_color, 0.15);
+    border-radius: 50%;
+}
+
+.theme-button:checked .theme-selector {
+    border-color: @accent_color;
+    border-width: 3px;
+}
+
+.theme-check {
+    color: @accent_color;
+    background-color: @window_bg_color;
+    border-radius: 50%;
+    padding: 2px;
+    -gtk-icon-size: 16px;
+}
+
+/* ============================================================
+ * Menu Items
+ * ============================================================ */
+
+.menu-item {
+    border-radius: 6px;
+    margin: 1px 0;
+}
+
+.menu-item:hover {
+    background-color: alpha(@view_fg_color, 0.08);
+}
+
+popover.menu contents {
+    padding: 6px;
+}
+
+/* ============================================================
+ * Network Activity Graph
+ * ============================================================ */
+
+.network-graph {
+    border-radius: 8px;
+    background-color: transparent;
+    min-height: 120px;
+}
+
+.live-indicator {
+    border-radius: 50%;
+    background-color: @success_color;
+    animation: pulse-live 1.5s ease-in-out infinite;
+    margin-right: 6px;
+    min-width: 8px;
+    min-height: 8px;
+}
+
+@keyframes pulse-live {
+    0%, 100% { opacity: 1.0; }
+    50% { opacity: 0.4; }
+}
+
+.legend-download {
+    border-radius: 3px;
+    background-color: #3584e4;
+}
+
+.legend-upload {
+    border-radius: 3px;
+    background-color: #2ec27e;
+}
+
+/* ============================================================
+ * Update Banner
+ * ============================================================ */
+
+.update-banner {
+    background-color: alpha(#e74c3c, 0.15);
+    border: 1px solid alpha(#e74c3c, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    opacity: 1;
+}
+
+.update-banner .update-icon {
+    color: #e74c3c;
+}
+
+.update-banner .update-link {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #e74c3c;
+    padding: 0;
+    min-height: 0;
+}
+
+.update-banner-label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #e74c3c;
+}

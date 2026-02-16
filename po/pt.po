@@ -1,0 +1,366 @@
+# Network Manager - Translation Template
+# Copyright (C) 2026 Christos A. Daggas
+# This file is distributed under the same license as the Network Manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: network-manager 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/christosdaggas/network-manager/issues\n"
+"POT-Creation-Date: 2026-01-10 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: PT <LL@li.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Application name
+#: network-manager/src/main.rs
+msgid "Network Manager"
+msgstr ""
+
+#. Application description
+#: data/com.chrisdaggas.network-manager.desktop
+msgid "Manage network and system profiles"
+msgstr ""
+
+#. Navigation items
+#: network-manager/src/ui/main_window.rs
+msgid "Dashboard"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Profiles"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Logs"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Settings"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "About"
+msgstr ""
+
+#. Dashboard page
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Current Network"
+msgstr ""
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Active Profile"
+msgstr ""
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "No profile active"
+msgstr ""
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "IP Address"
+msgstr ""
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Gateway"
+msgstr ""
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "DNS Servers"
+msgstr ""
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Quick Actions"
+msgstr ""
+
+#. Profile list
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "All Profiles"
+msgstr ""
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "Search profiles..."
+msgstr ""
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "Create Profile"
+msgstr ""
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "No profiles yet"
+msgstr ""
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "Create your first profile to get started"
+msgstr ""
+
+#. Profile editor
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Profile Name"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Group"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Networking"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "System"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Automation"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Auto-Switch Conditions"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Save"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Cancel"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Delete Profile"
+msgstr ""
+
+#. Networking actions
+#: network-manager-shared/src/actions/mod.rs
+msgid "IPv4 Configuration"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "IPv6 Configuration"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "DNS Servers"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Search Domains"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Default Gateway"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Static Routes"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Network Interface"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "MTU"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "MAC Address"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Wi-Fi Profile"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "VPN Connection"
+msgstr ""
+
+#. System actions
+#: network-manager-shared/src/actions/mod.rs
+msgid "Hostname"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Hosts File Entries"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "System Proxy"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Firewall Profile"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Default Printer"
+msgstr ""
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Time Zone"
+msgstr ""
+
+#. Automation
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Pre-Script"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Post-Script"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Run Program"
+msgstr ""
+
+#. Auto-switch conditions
+#: network-manager-shared/src/rules/mod.rs
+msgid "Wi-Fi SSID"
+msgstr ""
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Gateway MAC Address"
+msgstr ""
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Ping Target"
+msgstr ""
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Network Interface State"
+msgstr ""
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Time Window"
+msgstr ""
+
+#. Status labels
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Active"
+msgstr ""
+
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Inactive"
+msgstr ""
+
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Error"
+msgstr ""
+
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Applying"
+msgstr ""
+
+#. Settings page
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Appearance"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Theme"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "System Default"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Light"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Dark"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Behavior"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Auto-switch interval"
+msgstr ""
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Show notifications"
+msgstr ""
+
+#. Logs page
+#: network-manager/src/ui/pages/logs_page.rs
+msgid "Application Logs"
+msgstr ""
+
+#: network-manager/src/ui/pages/logs_page.rs
+msgid "Clear Logs"
+msgstr ""
+
+#: network-manager/src/ui/pages/logs_page.rs
+msgid "Export Logs"
+msgstr ""
+
+#. Dialogs
+#: network-manager/src/ui/main_window.rs
+msgid "Apply Profile"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Apply the following changes?"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Apply"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Profile applied successfully"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "Failed to apply profile"
+msgstr ""
+
+#: network-manager/src/ui/main_window.rs
+msgid "View Logs"
+msgstr ""
+
+#. Validation errors
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid IP address"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid DNS server"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid gateway"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid hostname"
+msgstr ""
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Profile name is required"
+msgstr ""
+
+#. CLI messages
+#: network-manager-cli/src/main.rs
+msgid "Profile activated successfully"
+msgstr ""
+
+#: network-manager-cli/src/main.rs
+msgid "Failed to activate profile"
+msgstr ""
+
+#: network-manager-cli/src/main.rs
+msgid "Profile not found"
+msgstr ""
+
+#: network-manager-cli/src/main.rs
+msgid "Daemon not running"
+msgstr ""

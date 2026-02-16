@@ -1,0 +1,24 @@
+# Build artifacts
+/target/
+/dist/
+
+# Build staging directories
+/build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Rust
+**/*.rs.bk
+Cargo.lock
+
+# Misc
+nohup.out

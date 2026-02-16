@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Network Manager - D-Bus Service Activation File
+  Copyright (C) 2026 Christos A. Daggas
+  SPDX-License-Identifier: MIT
+  
+  This file enables D-Bus activation of the daemon.
+  Install to: /usr/share/dbus-1/system-services/
+-->
+<busconfig>
+  <service>
+    <name>com.chrisdaggas.NetworkManagerd</name>
+    <exec>/usr/bin/cd-network-managerd</exec>
+    <user>root</user>
+    <systemd_service>cd-network-managerd.service</systemd_service>
+  </service>
+</busconfig>

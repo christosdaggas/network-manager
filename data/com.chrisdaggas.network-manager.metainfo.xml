@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Network Manager - AppStream Metainfo
+  Copyright (C) 2026 Christos A. Daggas
+  SPDX-License-Identifier: MIT
+-->
+<component type="desktop-application">
+  <id>com.chrisdaggas.network-manager</id>
+  
+  <name>Network Manager</name>
+  <summary>Manage network and system profiles</summary>
+  
+  <developer id="com.chrisdaggas">
+    <name>Christos A. Daggas</name>
+  </developer>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  
+  <description>
+    <p>
+      Network Manager is a Linux-native system and network profile manager 
+      inspired by NetSetMan Pro, redesigned for Linux best practices.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Create unlimited network and system profiles</li>
+      <li>Switch configurations manually, automatically, or via CLI</li>
+      <li>Manage IP addresses, DNS, routes, VPN, Wi-Fi profiles</li>
+      <li>Configure system settings: hostname, proxy, firewall, printer</li>
+      <li>Auto-switch profiles based on conditions (SSID, gateway, time)</li>
+      <li>Pre/post scripts for advanced automation</li>
+      <li>Non-blocking, responsive GTK4/libadwaita interface</li>
+    </ul>
+    <p>
+      The application follows GNOME Human Interface Guidelines and uses 
+      a secure privilege separation model with Polkit authorization.
+    </p>
+  </description>
+  
+  <url type="homepage">https://chrisdaggas.com</url>
+  <url type="bugtracker">https://github.com/christosdaggas/network-manager/issues</url>
+  <url type="help">https://github.com/christosdaggas/network-manager/wiki</url>
+  <url type="vcs-browser">https://github.com/christosdaggas/network-manager</url>
+  
+  <launchable type="desktop-id">com.chrisdaggas.network-manager.desktop</launchable>
+  
+  <branding>
+    <color type="primary" scheme_preference="light">#3584e4</color>
+    <color type="primary" scheme_preference="dark">#1a5fb4</color>
+  </branding>
+  
+  <screenshots>
+    <screenshot type="default">
+      <caption>Dashboard showing current network status and active profile</caption>
+      <image>https://chrisdaggas.com/network-manager/screenshots/dashboard.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Profile editor with networking configuration</caption>
+      <image>https://chrisdaggas.com/network-manager/screenshots/profile-editor.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Profile list with groups and status indicators</caption>
+      <image>https://chrisdaggas.com/network-manager/screenshots/profiles.png</image>
+    </screenshot>
+  </screenshots>
+  
+  <content_rating type="oars-1.1" />
+  
+  <releases>
+    <release version="1.4.0" date="2026-02-16">
+      <description>
+        <p>Security hardening, performance, and compatibility release:</p>
+        <ul>
+          <li>Argon2id key derivation for profile encryption (replaces raw SHA-256)</li>
+          <li>Random per-message salt added to every encrypted payload</li>
+          <li>Encryption passphrase is no longer persisted to disk</li>
+          <li>Config, cache, and log files now set strict 0600/0700 permissions</li>
+          <li>Key material is zeroed from memory on drop (zeroize)</li>
+          <li>Cryptographic nonces generated with OsRng</li>
+          <li>Sandbox mode now fails loudly when bwrap/firejail is missing</li>
+          <li>Removed shell-injection-prone execute_command(sh -c) API</li>
+          <li>Ping and DNS input validated against injection</li>
+          <li>Proxy settings check for GNOME schema before applying</li>
+          <li>Regex DoS protection with size-limited compilation</li>
+          <li>Compiled regexes cached across auto-switch cycles</li>
+          <li>Watchdog and auto-switch blocking calls offloaded from UI thread</li>
+          <li>Update checker response body size-limited to 512 KiB</li>
+          <li>Tokio runtime features narrowed to reduce binary size</li>
+          <li>DEB/RPM packages now declare NetworkManager dependency</li>
+          <li>Package architecture auto-detected from host (aarch64 support)</li>
+          <li>Bubblewrap uses existence check for /lib64 instead of hard bind</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.0" date="2026-02-09">
+      <description>
+        <p>Major feature release with complete profile actions:</p>
+        <ul>
+          <li>Schedule profile activation with real profile selection</li>
+          <li>Hotkey binding to actual profiles for quick switching</li>
+          <li>Automatic scheduler execution at configured times</li>
+          <li>VPN disconnect, MTU, MAC address cloning support</li>
+          <li>DNS search domains configuration</li>
+          <li>Hostname and timezone configuration per profile</li>
+          <li>Default printer selection per profile</li>
+          <li>Environment variables per profile</li>
+          <li>Sandbox script execution (bubblewrap/flatpak)</li>
+          <li>Profile encryption with AES-256-GCM</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.0" date="2026-02-01">
+      <description>
+        <p>UI improvements and update checking:</p>
+        <ul>
+          <li>Collapsible sidebar with icon-only mode</li>
+          <li>Automatic GitHub release checking</li>
+          <li>What's New section in About dialog</li>
+          <li>Improved card styling</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.0" date="2026-01-15">
+      <description>
+        <p>Initial stable release:</p>
+        <ul>
+          <li>Dashboard with network status overview</li>
+          <li>Profile creation and management</li>
+          <li>NetworkManager integration via D-Bus</li>
+          <li>System log viewer</li>
+          <li>Theme selector (system, light, dark)</li>
+          <li>Autostart support</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  
+  <supports>
+    <internet>offline-only</internet>
+  </supports>
+  
+  <keywords>
+    <keyword>network</keyword>
+    <keyword>profile</keyword>
+    <keyword>switch</keyword>
+    <keyword>IP</keyword>
+    <keyword>DNS</keyword>
+    <keyword>VPN</keyword>
+    <keyword>WiFi</keyword>
+    <keyword>firewall</keyword>
+  </keywords>
+  
+  <categories>
+    <category>System</category>
+    <category>Network</category>
+    <category>Settings</category>
+  </categories>
+  
+  <translation type="gettext">network-manager</translation>
+</component>

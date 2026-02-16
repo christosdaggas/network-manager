@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+        # Reload systemd to pick up new service
+        if [ -d /run/systemd/system ]; then
+            systemctl daemon-reload >/dev/null || true
+        fi
+        
+        # Enable the daemon service
+        if [ -d /run/systemd/system ]; then
+            systemctl enable cd-network-managerd.service >/dev/null || true
+            systemctl start cd-network-managerd.service >/dev/null || true
+        fi
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

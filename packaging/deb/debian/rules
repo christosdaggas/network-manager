@@ -1,0 +1,58 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export CARGO_HOME = $(CURDIR)/debian/.cargo
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cargo build --release --workspace
+
+override_dh_auto_install:
+	# Install GUI application
+	install -Dm755 target/release/cd-network-manager \
+		debian/cd-network-manager/usr/bin/cd-network-manager
+	
+	# Install daemon
+	install -Dm755 target/release/cd-network-managerd \
+		debian/cd-network-manager-daemon/usr/bin/cd-network-managerd
+	
+	# Install CLI
+	install -Dm755 target/release/nmctl \
+		debian/cd-network-manager-cli/usr/bin/nmctl
+	
+	# Install desktop file
+	install -Dm644 data/com.chrisdaggas.network-manager.desktop \
+		debian/cd-network-manager/usr/share/applications/com.chrisdaggas.network-manager.desktop
+	
+	# Install metainfo
+	install -Dm644 data/com.chrisdaggas.network-manager.metainfo.xml \
+		debian/cd-network-manager/usr/share/metainfo/com.chrisdaggas.network-manager.metainfo.xml
+	
+	# Install icons
+	install -Dm644 data/icons/hicolor/scalable/apps/com.chrisdaggas.network-manager.svg \
+		debian/cd-network-manager/usr/share/icons/hicolor/scalable/apps/com.chrisdaggas.network-manager.svg
+	install -Dm644 data/icons/hicolor/symbolic/apps/com.chrisdaggas.network-manager-symbolic.svg \
+		debian/cd-network-manager/usr/share/icons/hicolor/symbolic/apps/com.chrisdaggas.network-manager-symbolic.svg
+	
+	# Install D-Bus configuration
+	install -Dm644 data/dbus-1/com.chrisdaggas.NetworkManagerd.conf \
+		debian/cd-network-manager-daemon/usr/share/dbus-1/system.d/com.chrisdaggas.NetworkManagerd.conf
+	install -Dm644 data/dbus-1/com.chrisdaggas.NetworkManagerd.service \
+		debian/cd-network-manager-daemon/usr/share/dbus-1/system-services/com.chrisdaggas.NetworkManagerd.service
+	
+	# Install Polkit policy
+	install -Dm644 data/polkit/com.chrisdaggas.network-manager.policy \
+		debian/cd-network-manager-daemon/usr/share/polkit-1/actions/com.chrisdaggas.network-manager.policy
+	
+	# Install systemd service
+	install -Dm644 data/systemd/cd-network-managerd.service \
+		debian/cd-network-manager-daemon/lib/systemd/system/cd-network-managerd.service
+
+override_dh_auto_test:
+	cargo test --release --workspace
+
+override_dh_auto_clean:
+	cargo clean
+	rm -rf debian/.cargo

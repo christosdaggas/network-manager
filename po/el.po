@@ -1,0 +1,361 @@
+# Greek translation for Network Manager
+# Copyright (C) 2026 Christos A. Daggas
+# This file is distributed under the same license as the Network Manager package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: network-manager 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/christosdaggas/network-manager/issues\n"
+"POT-Creation-Date: 2026-01-10 12:00+0000\n"
+"PO-Revision-Date: 2026-01-10 12:00+0000\n"
+"Last-Translator: Christos A. Daggas <info@chrisdaggas.com>\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Application name
+#: network-manager/src/main.rs
+msgid "Network Manager"
+msgstr "Διαχείριση Δικτύου"
+
+#. Application description
+#: data/com.chrisdaggas.network-manager.desktop
+msgid "Manage network and system profiles"
+msgstr "Διαχείριση προφίλ δικτύου και συστήματος"
+
+#. Navigation items
+#: network-manager/src/ui/main_window.rs
+msgid "Dashboard"
+msgstr "Πίνακας Ελέγχου"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Profiles"
+msgstr "Προφίλ"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Logs"
+msgstr "Αρχεία Καταγραφής"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: network-manager/src/ui/main_window.rs
+msgid "About"
+msgstr "Σχετικά"
+
+#. Dashboard page
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Current Network"
+msgstr "Τρέχον Δίκτυο"
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Active Profile"
+msgstr "Ενεργό Προφίλ"
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "No profile active"
+msgstr "Κανένα ενεργό προφίλ"
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "IP Address"
+msgstr "Διεύθυνση IP"
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Gateway"
+msgstr "Πύλη"
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "DNS Servers"
+msgstr "Διακομιστές DNS"
+
+#: network-manager/src/ui/pages/dashboard_page.rs
+msgid "Quick Actions"
+msgstr "Γρήγορες Ενέργειες"
+
+#. Profile list
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "All Profiles"
+msgstr "Όλα τα Προφίλ"
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "Search profiles..."
+msgstr "Αναζήτηση προφίλ..."
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "Create Profile"
+msgstr "Δημιουργία Προφίλ"
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "No profiles yet"
+msgstr "Δεν υπάρχουν προφίλ"
+
+#: network-manager/src/ui/pages/profiles_page.rs
+msgid "Create your first profile to get started"
+msgstr "Δημιουργήστε το πρώτο σας προφίλ για να ξεκινήσετε"
+
+#. Profile editor
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Profile Name"
+msgstr "Όνομα Προφίλ"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Group"
+msgstr "Ομάδα"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Networking"
+msgstr "Δικτύωση"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "System"
+msgstr "Σύστημα"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Automation"
+msgstr "Αυτοματισμός"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Auto-Switch Conditions"
+msgstr "Συνθήκες Αυτόματης Εναλλαγής"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Delete Profile"
+msgstr "Διαγραφή Προφίλ"
+
+#. Networking actions
+#: network-manager-shared/src/actions/mod.rs
+msgid "IPv4 Configuration"
+msgstr "Ρύθμιση IPv4"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "IPv6 Configuration"
+msgstr "Ρύθμιση IPv6"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Search Domains"
+msgstr "Τομείς Αναζήτησης"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Default Gateway"
+msgstr "Προεπιλεγμένη Πύλη"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Static Routes"
+msgstr "Στατικές Διαδρομές"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Network Interface"
+msgstr "Διεπαφή Δικτύου"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "MTU"
+msgstr "MTU"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "MAC Address"
+msgstr "Διεύθυνση MAC"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Wi-Fi Profile"
+msgstr "Προφίλ Wi-Fi"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "VPN Connection"
+msgstr "Σύνδεση VPN"
+
+#. System actions
+#: network-manager-shared/src/actions/mod.rs
+msgid "Hostname"
+msgstr "Όνομα Συστήματος"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Hosts File Entries"
+msgstr "Εγγραφές Αρχείου Hosts"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "System Proxy"
+msgstr "Διακομιστής Μεσολάβησης"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Firewall Profile"
+msgstr "Προφίλ Τείχους Προστασίας"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Default Printer"
+msgstr "Προεπιλεγμένος Εκτυπωτής"
+
+#: network-manager-shared/src/actions/mod.rs
+msgid "Time Zone"
+msgstr "Ζώνη Ώρας"
+
+#. Automation
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Pre-Script"
+msgstr "Σενάριο Πριν"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Post-Script"
+msgstr "Σενάριο Μετά"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Run Program"
+msgstr "Εκτέλεση Προγράμματος"
+
+#. Auto-switch conditions
+#: network-manager-shared/src/rules/mod.rs
+msgid "Wi-Fi SSID"
+msgstr "SSID Wi-Fi"
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Gateway MAC Address"
+msgstr "Διεύθυνση MAC Πύλης"
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Ping Target"
+msgstr "Στόχος Ping"
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Network Interface State"
+msgstr "Κατάσταση Διεπαφής Δικτύου"
+
+#: network-manager-shared/src/rules/mod.rs
+msgid "Time Window"
+msgstr "Χρονικό Παράθυρο"
+
+#. Status labels
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Active"
+msgstr "Ενεργό"
+
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Inactive"
+msgstr "Ανενεργό"
+
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: network-manager/src/ui/widgets/status_pill.rs
+msgid "Applying"
+msgstr "Εφαρμογή"
+
+#. Settings page
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Appearance"
+msgstr "Εμφάνιση"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Theme"
+msgstr "Θέμα"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "System Default"
+msgstr "Προεπιλογή Συστήματος"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Light"
+msgstr "Φωτεινό"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Dark"
+msgstr "Σκοτεινό"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Behavior"
+msgstr "Συμπεριφορά"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Auto-switch interval"
+msgstr "Διάστημα αυτόματης εναλλαγής"
+
+#: network-manager/src/ui/pages/settings_page.rs
+msgid "Show notifications"
+msgstr "Εμφάνιση ειδοποιήσεων"
+
+#. Logs page
+#: network-manager/src/ui/pages/logs_page.rs
+msgid "Application Logs"
+msgstr "Αρχεία Καταγραφής Εφαρμογής"
+
+#: network-manager/src/ui/pages/logs_page.rs
+msgid "Clear Logs"
+msgstr "Εκκαθάριση Αρχείων"
+
+#: network-manager/src/ui/pages/logs_page.rs
+msgid "Export Logs"
+msgstr "Εξαγωγή Αρχείων"
+
+#. Dialogs
+#: network-manager/src/ui/main_window.rs
+msgid "Apply Profile"
+msgstr "Εφαρμογή Προφίλ"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Apply the following changes?"
+msgstr "Εφαρμογή των παρακάτω αλλαγών;"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Profile applied successfully"
+msgstr "Το προφίλ εφαρμόστηκε επιτυχώς"
+
+#: network-manager/src/ui/main_window.rs
+msgid "Failed to apply profile"
+msgstr "Αποτυχία εφαρμογής προφίλ"
+
+#: network-manager/src/ui/main_window.rs
+msgid "View Logs"
+msgstr "Προβολή Αρχείων"
+
+#. Validation errors
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid IP address"
+msgstr "Μη έγκυρη διεύθυνση IP"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid DNS server"
+msgstr "Μη έγκυρος διακομιστής DNS"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid gateway"
+msgstr "Μη έγκυρη πύλη"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Invalid hostname"
+msgstr "Μη έγκυρο όνομα συστήματος"
+
+#: network-manager/src/ui/pages/profile_editor_page.rs
+msgid "Profile name is required"
+msgstr "Απαιτείται όνομα προφίλ"
+
+#. CLI messages
+#: network-manager-cli/src/main.rs
+msgid "Profile activated successfully"
+msgstr "Το προφίλ ενεργοποιήθηκε επιτυχώς"
+
+#: network-manager-cli/src/main.rs
+msgid "Failed to activate profile"
+msgstr "Αποτυχία ενεργοποίησης προφίλ"
+
+#: network-manager-cli/src/main.rs
+msgid "Profile not found"
+msgstr "Το προφίλ δεν βρέθηκε"
+
+#: network-manager-cli/src/main.rs
+msgid "Daemon not running"
+msgstr "Η υπηρεσία δεν εκτελείται"
