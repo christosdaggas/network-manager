@@ -6,8 +6,6 @@
 
 **A Linux-native network and system profile manager built with GTK4 and libadwaita.**
 
-Inspired by [NetSetMan Pro](https://www.netsetman.com/) for Windows — redesigned for Linux.
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/Rust-1.75+-orange.svg)](https://www.rust-lang.org/)
 [![GTK4](https://img.shields.io/badge/GTK-4.14-green.svg)](https://www.gtk.org/)
