@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Network Manager](data/icons/hicolor/scalable/apps/com.chrisdaggas.network-manager.svg)
+<img width="100%" height="auto" alt="network-manager-white" src="https://github.com/user-attachments/assets/7f1ba6a7-a613-49e3-ac3f-c14636e3d929" />
 
 **A Linux-native network and system profile manager built with GTK4 and libadwaita.**
 
